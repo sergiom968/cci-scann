@@ -6,7 +6,7 @@ function scan(){
 			if(!result.cancelled){
 				if(result.format == "QR_CODE"){
 					$.ajax({
-						url: "http://192.168.1.4:8080/api/scan",
+						url: "http://31.220.57.97:3000/api/scan",
 						method: "POST",
 						data: {text: result.text},
 						dataType: "json"
