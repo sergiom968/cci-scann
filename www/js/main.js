@@ -1,6 +1,5 @@
 function scan(){
-	//alert('scan')
-	content.$data.datos = {Image: "qr.png"}
+	alert('scan')
 	cordova.plugins.barcodeScanner.scan(
 		function (result) {
 			if(!result.cancelled){
@@ -13,6 +12,7 @@ function scan(){
 					})
 					.done(function (res) {
 						if(res.code == 200){
+							changeData(res.data)
 							res.data.Image = 'check.png'
 							res.data.Msg = 'Usario Verificado'
 						}else{
@@ -32,4 +32,8 @@ function scan(){
 			Materialize.toast('Error en la lectura del código', 3000, 'rounded');  
 		}
    );
+}
+
+function chageData(data){
+	$("#nombre").text(`${data.nombres || ''} ${data.apellidos || ''}`)
 }
